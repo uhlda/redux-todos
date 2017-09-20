@@ -17,29 +17,23 @@ interface Todo {
 const todos = (state: any = [], action: Action) => {
   switch (action.type) {
     case ADD_TODO:
-      return Object.assign({}, state, {
-        todos: [
-          ...state.todos, 
+       return [
+          ...state, 
           {
             text: action.text,
             completed: false,
-            index: state.todos.length
+            index: (state.todos === undefined) ? 0 : state.todos.length
           }
-        ]
-      });
+        ];
     case TOGGLE_TODO:
-      return Object.assign({}, state, {
-        todos: state.todos.map(
-          (todo: Todo, index: number) => {
-            if (todo.index === action.index) {
-              return Object.assign({}, todo, {
-                completed: !todo.completed
-              });
-            } else {
-              return todo;
-            }
-          }
-        )
+      return state.map(
+        (todo: Todo, index: number) => {
+        if (index === action.index) {
+          return Object.assign({}, todo, {
+            completed: !todo.completed
+          });
+        }
+        return todo;
       });
     default:
       return state;
@@ -63,3 +57,5 @@ export const todoApp = combineReducers({
   visibilityFilter,
   todos
 });
+
+export default todoApp;

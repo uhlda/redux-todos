@@ -41,16 +41,16 @@ e* Action Type
    * action creators
    */
   
-//  export const addTodo = (text: string) => {
-//    return { 
-//      type: ADD_TODO, text 
-//    };
-//  };
+ export const addTodo = (text: string) => {
+   return { 
+     type: ADD_TODO, text 
+   };
+ };
   
-//  export function toggleTodo(index: number) {
-//     return { type: TOGGLE_TODO, index };
-//  }
+ export function toggleTodo(index: number) {
+    return { type: TOGGLE_TODO, index };
+ }
   
-//  export function setVisibilityFilter(filter: string) {
-//     return { type: SET_VISIBILITY_FILTER, filter };
-//  }
+ export function setVisibilityFilter(filter: string) {
+    return { type: SET_VISIBILITY_FILTER, filter };
+ }
