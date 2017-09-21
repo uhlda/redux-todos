@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { Todo } from './Todo';
 import { 
   Action, 
   VisibilityFilters,
@@ -6,12 +7,6 @@ import {
   ADD_TODO,
   TOGGLE_TODO
 } from './actions';
-
-interface Todo {
-  text: string;
-  completed: boolean;
-  index: number;
-}
 
 // tslint:disable-next-line:no-any
 const todos = (state: any = [], action: Action) => {
@@ -22,7 +17,7 @@ const todos = (state: any = [], action: Action) => {
           {
             text: action.text,
             completed: false,
-            index: (state.todos === undefined) ? 0 : state.todos.length
+            index: state.length
           }
         ];
     case TOGGLE_TODO:
@@ -44,9 +39,7 @@ const visibilityFilter =
   (state = VisibilityFilters.SHOW_ALL, action: Action) => {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
-      return Object.assign({}, state, { 
-        visibilityFilter: action.filter 
-      });
+      return  action.filter; 
     default:
       return state;
   }
