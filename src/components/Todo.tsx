@@ -5,13 +5,23 @@ interface Props {
     text: string;
     completed: boolean;
     index: number;
-    onClick: {};
+    // tslint:disable-next-line:no-any
+    onClick: any;
 }
 
-export class Todo extends React.Component<Props, {}> {
+class Todo extends React.Component<Props, {}> {
     render() {
         return(
-            <div className="blob">blob</div> 
-        )
+            <li  
+                onClick={this.props.onClick} 
+                style={{
+                    textDecoration: this.props.completed ? 'line-through' : 'none'
+                }}                
+            >
+                {this.props.text}
+            </li>
+        );
     }   
 }
+
+export default Todo;

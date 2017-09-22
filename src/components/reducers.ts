@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { Todo } from './Todo';
 import { 
   Action, 
   VisibilityFilters,
@@ -7,6 +6,12 @@ import {
   ADD_TODO,
   TOGGLE_TODO
 } from './actions';
+
+interface Todo {
+  text: string;
+  completed: boolean;
+  index: number;
+}
 
 // tslint:disable-next-line:no-any
 const todos = (state: any = [], action: Action) => {
